@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `cus_id`, `name`, `code`, `password`) VALUES
-(1, 1, 'rajarata123', 'rajarata123', 'rajarata123');
+(1, 1, 'new', '123', '123');
 
 -- --------------------------------------------------------
 
@@ -83,10 +83,10 @@ CREATE TABLE IF NOT EXISTS `customer` (
 --
 
 INSERT INTO `customer` (`cus_id`, `username`, `password`, `email`, `address`, `mobile`) VALUES
-(1, 'rajarata123', 'rajarata123', '', '', ''),
-(2, 'thaditha', '123', 'thaditharodrigo22@gmail.com', '1-H/11/Jayawadanagama Hosing Scheme, Wickramasinghapura, Battarmulla', '076-1149905'),
-(3, 'manuja', '123', 'manuja@gmail.com', 'kalapulwawa road,Dambulla', '077-1234567'),
-(4, 'sachin', '123', 'schin@gmail.com', 'aSFas', '011-2345678');
+(1, 'new', '123', '', '', ''),
+(2, 'new2', '123', 'new2@gmail.com', 'new', '0123456789'),
+(3, 'new3', '123', 'new3@gmail.com', 'new3', '0123456789'),
+(4, 'new4', '123', 'new4@gmail.com', 'new4', '0123456789');
 
 -- --------------------------------------------------------
 
@@ -159,8 +159,8 @@ CREATE TABLE IF NOT EXISTS `purch_history` (
 --
 
 INSERT INTO `purch_history` (`purch_id`, `cus_id`, `cus_name`, `item_count`, `price`, `date`) VALUES
-(1, 2, 'thaditha', 5, 2300, '2022-12-02'),
-(2, 2, 'Manuja', 15, 17896, '2022-12-02');
+(1, 2, 'new1', 5, 2300, '2024-12-02'),
+(2, 2, 'bew3', 15, 17896, '2025-12-02');
 
 -- --------------------------------------------------------
 
