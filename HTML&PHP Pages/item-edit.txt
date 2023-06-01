@@ -1,0 +1,71 @@
+<?php
+	
+	if(isset($_POST["btnAdd"]))
+	{
+		
+			 $con = mysqli_connect("localhost","root","","it21351440","3306");
+
+			 if(!$con) 
+			 {
+				die("Sorry!!! we are facing technical issue"); 
+			 }
+?>	
+
+
+
+<?php
+		  $id = $_POST["add-id"];
+		  $name = $_POST["add-name"];
+	  	  $description = $_POST["add-description"];
+	      $discount = $_POST["add-discount"]/100;
+	      $category = $_POST["add-category"];
+	      $price = $_POST["add-price"];
+		
+			if (!file_exists($_FILES['add-image']['tmp_name']) || !is_uploaded_file ($_FILES['add-image']['tmp_name']))
+			{
+				$image = $_SESSION["img_path"];
+			}
+			else
+			{
+				$image = "item_images/" . basename($_FILES["add-image"]["name"]);
+		  		$imageFileType = strtolower(pathinfo($image,PATHINFO_EXTENSION));
+
+// Check if image file is a actual image or fake image
+
+	    		$check = getimagesize($_FILES["add-image"]["tmp_name"]);
+	    		if( ($check !== false) && ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "jpeg" || $imageFileType == "gif" || $imageFileType == "img" || $imageFileType == "webp")) {
+		  		move_uploaded_file($_FILES["add-image"]["tmp_name"], $image);
+	    		} 
+				else 
+				{
+?>	
+			<script>
+				alert('File is not a image');
+			</script>
+<?php
+	    		}
+			}
+
+		 $sql = "UPDATE `product` SET `category`='".$category."',`name`='".$name."',`price`='".$price."',`description`='".$description."',`discount`='".$discount."',`img_path`='".$image."' WHERE `pro_id` = '".$id."';";
+
+		 if(mysqli_query($con,$sql))	
+		 {
+?>	
+			<script>
+				alert('Successfully updated the item');
+				window.location.href='itemEdit.php?id=<?php echo $id; ?>'
+			</script>
+<?php
+		 }
+		 else
+		 {
+?>	
+			<script> 
+				alert('Opps !! Something is wrong , Please try again');
+				window.location.href='itemEdit.php?id=<?php echo $id; ?>'
+    		</script>
+<?php
+		 }
+	}
+	  
+?>
